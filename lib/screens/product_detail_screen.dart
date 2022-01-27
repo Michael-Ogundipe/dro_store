@@ -1,4 +1,5 @@
 import 'package:dro_store/constants.dart';
+import 'package:dro_store/screens/bag_screen.dart';
 import 'package:dro_store/store/mystore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,12 @@ class ProductDetailScreen extends StatelessWidget {
     var store = Provider.of<MyStore>(context);
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[Text(store.getBagQuantity().toString())],
+        actions: <Widget>[InkWell(
+          onTap: (){
+            // moves to bag screen
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const BagScreen(),),);
+          },
+            child: Text(store.getBagQuantity().toString(),),),],
       ),
       body: ResponsiveSafeArea(
         responsiveBuilder: (context, size) {
